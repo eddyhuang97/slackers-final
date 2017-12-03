@@ -2,7 +2,7 @@ library(dplyr)
 library(ggplot2)
 library(shiny)
 
-shinyUI(navbarPage("Terrorism",
+shinyUI(navbarPage("Terrorism in the United States",
      tabPanel("The Map",
         sidebarLayout(
           sidebarPanel(
