@@ -14,7 +14,7 @@ shinyUI(navbarPage("Terrorism in the United States",
                         max = 20, value = 6)
           ),
           
-          # Main panel displaying output
+          # Main panel displaying outputs
           mainPanel(
             plotOutput("map")
           )

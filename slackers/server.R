@@ -14,7 +14,7 @@ shinyServer(function(input, output) {
       xlab("longitude") +
       ylab("latitude")
   })
-  #code for attacks in general, and type of attack
+  #code for attacks in general, and type of attacks
   output$barGraph <- renderPlot({
     btwn70And80 <- filter(data, iyear >= 1970 & iyear < 1980)
     btwn80And90 <- filter(data, iyear >= 1980 & iyear < 1990)
