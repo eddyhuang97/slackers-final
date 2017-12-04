@@ -19,7 +19,22 @@ shinyUI(navbarPage("Terrorism in the United States",
             plotOutput("map")
           )
         )),
-     tabPanel("The Bar graph"),
+     tabPanel("The Bar graph",
+              sidebarLayout(
+                sidebarPanel(
+                  radioButtons("typeAttack", label = h3("Choose a type of terrorist attack"), selected = "All types",
+                               choices = list("All types" = "All types", 
+                                              "Armed Assault" = "Armed Assault", 
+                                              "Explosives" = "Explosives",
+                                              "Facility/Infrastructure attack" = "building attack", 
+                                              "Unarmed Assault" = "Unarmed Assault"))
+                ),
+                mainPanel(
+                  plotOutput("barGraph")
+                )
+              )
+              
+              ),
      tabPanel("Other stuff ... just rename this guys")
   )
 )
