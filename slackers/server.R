@@ -8,7 +8,7 @@ data <- read.csv("United States.csv")
 shinyServer(function(input, output) {
    
   output$map <- renderPlot({
-    ggmap(get_map(location = input$location, zoom = input$zoom), width = 600, height = 400) +
+    ggmap(get_map(location = input$location, zoom = input$zoom, size = c(600, 400))) +
       geom_point(data = data, aes(x=longitude, y=latitude), alpha = .1, col="black", na.rm = TRUE) +
       ggtitle("Where Terrorism event happens") +
       xlab("longitude") +
