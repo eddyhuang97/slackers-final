@@ -5,9 +5,8 @@ account: eddyhuang
 server: shinyapps.io
 hostUrl: https://api.shinyapps.io/v1
 appId: 243481
-bundleId: 1115137
+bundleId: 1115483
 url: https://eddyhuang.shinyapps.io/terrorism_in_the_united_states/
-when: 1512425060.73457
+when: 1512439536.82442
 asMultiple: FALSE
 asStatic: FALSE
-ignoredFiles: clean up data.R|debug.csv|globalterrorismdb_0617dist.csv.bz2

@@ -4,7 +4,7 @@ library(shiny)
 library(shinythemes)
 
 shinyUI(navbarPage(theme = shinytheme("cerulean"), "Terrorism in the United States",
-     tabPanel("The Map",
+     tabPanel("Where it happens",
         sidebarLayout(
           sidebarPanel(
             textInput("location", label = h3("Which Location would you like to explore?"), value = "Washington"),
