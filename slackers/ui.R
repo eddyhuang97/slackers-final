@@ -1,8 +1,9 @@
 library(dplyr)
 library(ggplot2)
 library(shiny)
+library(shinythemes)
 
-shinyUI(navbarPage("Terrorism in the United States",
+shinyUI(navbarPage(theme = shinytheme("cerulean"), "Terrorism in the United States",
      tabPanel("The Map",
         sidebarLayout(
           sidebarPanel(
