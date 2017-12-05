@@ -14,6 +14,14 @@ shinyServer(function(input, output) {
       xlab("longitude") +
       ylab("latitude")
   })
+  
+  output$mapByType <- renderPlot({
+    ggmap(get_map(location = input$location)) +
+      geom_point(data = data, aes(x=longitude, y=latitude), alpha = .1, col='black', na.rm = TRUE) +
+      ggtitle("Types of Attacks")
+  })
+  
+  
   #code for attacks in general, and type of attacks
   output$barGraph <- renderPlot({
     btwn70And80 <- filter(data, iyear >= 1970 & iyear < 1980)

@@ -35,6 +35,17 @@ shinyUI(navbarPage("Terrorism in the United States",
               )
               
               ),
-     tabPanel("Other stuff ... just rename this guys")
+     tabPanel("Type Of Attack",
+              sidebarLayout(
+                sidebarPanel(
+                  checkboxGroupInput("Type of Attack", label = h3("Select Type"),
+                                     choices = list("Armed Assault" = 'Armed Assault', "Explosives" = 'Explosives', "Facility/Infrastructure attack" = 'building attack', "Unarmed Assault" = 'Unarmed Assault'), selected = c("Armed Assault","Explosives", "Facility/Infrastructure attack", "Unarmed Assault"))                  
+                ),
+                mainPanel(
+                  plotOutput("mapByType")
+                )
+              )
+              
+              )
   )
 )
