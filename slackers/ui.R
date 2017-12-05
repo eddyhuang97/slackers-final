@@ -20,7 +20,7 @@ shinyUI(navbarPage(theme = shinytheme("cerulean"), "Terrorism in the United Stat
             plotOutput("map")
           )
         )),
-     tabPanel("The Bar graph",
+     tabPanel("Amount of Attacks",
               sidebarLayout(
                 sidebarPanel(
                   radioButtons("typeAttack", label = h3("Choose a type of terrorist attack"), selected = "All types",
