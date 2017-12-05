@@ -16,9 +16,10 @@ shinyServer(function(input, output) {
   })
   
   output$mapByType <- renderPlot({
-    ggmap(get_map(location = input$location)) +
-      geom_point(data = data, aes(x=longitude, y=latitude), alpha = .1, col='black', na.rm = TRUE) +
-      ggtitle("Types of Attacks")
+    ggmap(get_map(location = 'United States', zoom = 3)) +
+      geom_point(data = data %>%
+                   filter(), aes(x=longitude, y=latitude), alpha = .1, col='black', na.rm = TRUE) +
+      ggtitle("Type of Attack")
   })
   
   
