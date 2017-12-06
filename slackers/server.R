@@ -10,7 +10,7 @@ shinyServer(function(input, output) {
   output$map <- renderPlot({
     ggmap(get_map(location = input$location, zoom = input$zoom)) +
       geom_point(data = data, aes(x=longitude, y=latitude), alpha = .1, col="black", na.rm = TRUE) +
-      ggtitle("Where Terrorism event happens") +
+      ggtitle("Where Terrorism Events Happen in the U.S.") +
       xlab("longitude") +
       ylab("latitude")
   })
@@ -18,9 +18,34 @@ shinyServer(function(input, output) {
   output$mapByType <- renderPlot({
     ggmap(get_map(location = 'United States', zoom = 3)) +
       geom_point(data = data %>% filter(attacktype1_txt == input$typeOfAttack), aes(x=longitude, y=latitude), alpha = .1, col='black', na.rm = TRUE) +
-      ggtitle("Type of Attack")
+      ggtitle("Types of Attacks")
   })
   
+  # Outputs a plot of attacks by nationality
+  output$nationality <- renderPlot({
+    # Sets up all the data about terrorist attacks  
+    nationalities <- data %>% distinct(natlty1_txt)
+    nationalities[nationalities==""]<-NA
+    nationalities <- na.omit(nationalities, cols=seq_along(nationalities), invert=FALSE)
+    nationalities$num_attacks <- NA
+    rownames(nationalities) <- 1:nrow(nationalities)
+    # Adds all the number of attacks based on each nationality to own dataframe (excluding all attacks that didn't have nationality provided)
+    for (row in 1:nrow(nationalities)) {
+      nationality <- nationalities[row, "natlty1_txt"]
+      attacks_sum <- sum(data$natlty1_txt == nationality)
+      nationalities$num_attacks[nationalities$natlty1_txt == nationality] <- attacks_sum
+    }
+    plot <- ggplot(nationalities, aes(x = nationalities$natlty1_txt, y = nationalities$num_attacks, color = nationalities$natlty1_txt)) + 
+      geom_point(size = 4) +
+      theme(axis.text.x = element_text(angle = 90, hjust = 1), legend.position = "none") +
+      ggtitle("Number of Attacks in the U.S. by Nationality") +
+      theme(axis.text.y = element_text(angle = 0, hjust = 1)) +
+      title(line = 3) +
+      xlab("Number of Attacks") +
+      ylab("Nationality")
+    print(plot)
+  }, height = 700, width = 1200)
+  # height = 1000
   
   #code for attacks in general, and type of attacks
   output$barGraph <- renderPlot({
