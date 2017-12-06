@@ -49,14 +49,9 @@ shinyUI(navbarPage(theme = shinytheme("cerulean"), "Terrorism in the United Stat
               
               ),
      tabPanel("Documentation",
-             
                 mainPanel(
                 includeHTML("documentation.html")
-                
-
                 )
-            
-              
               )
      
   )
