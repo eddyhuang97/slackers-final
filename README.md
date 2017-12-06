@@ -1,7 +1,3 @@
-# Global terrorism stats
+# Terrorism in the United States
 
-when are they most common (what date)
-which year had the most
-which month had the most
-where was most likely to be attacked
-type of attack
+Our final project can be found [here](https://eddyhuang.shinyapps.io/terrorism_in_the_united_states/)!
